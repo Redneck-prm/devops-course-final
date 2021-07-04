@@ -13,9 +13,6 @@ jobs:
           ls ${{ github.workspace }}
           pwd
       - run: echo "🍏 This job's status is ${{ job.status }}."
-#      - run: |
-#          apt update 
-#          apt install ansible-lint
       - run: |
           cd ansible
           find . -name "*.y*ml" | xargs -r ansible-lint --force-color
