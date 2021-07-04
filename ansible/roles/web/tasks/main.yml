@@ -1,4 +1,4 @@
-- name: copy index file 
+- name: copy index file
   copy:
     src: index.html
     dest: /root/index.html
