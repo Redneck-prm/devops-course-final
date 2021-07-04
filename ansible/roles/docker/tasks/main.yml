@@ -1,0 +1,10 @@
+- name: install docker
+  apt:
+    name: docker.io
+    update_cache: yes
+
+- name: enable and run docker
+  systemd:
+    name: docker
+    enabled: yes
+    state: started

@@ -1,0 +1,17 @@
+[Unit]
+Description=nginx-web docker wrapper
+Wants=docker.socket
+After=docker.service
+
+[Service]
+User=root
+PermissionsStartOnly=true
+ExecStart=/usr/local/bin/nginx-start.sh
+ExecStartPre=-/usr/bin/docker rm -f nginx-web
+ExecStop=/usr/bin/docker stop nginx-web
+Restart=always
+RestartSec=15s
+TimeoutStartSec=30s
+
+[Install]
+WantedBy=multi-user.target

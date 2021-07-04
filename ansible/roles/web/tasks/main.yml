@@ -1,0 +1,34 @@
+- name: copy index file 
+  copy:
+    src: index.html
+    dest: /root/index.html
+    owner: root
+    group: root
+    mode: 0644
+
+- name: copy start script
+  copy:
+    src: nginx-start.sh
+    dest: /usr/local/bin/nginx-start.sh
+    owner: root
+    group: root
+    mode: 0755
+
+- name: copy web svc file
+  copy:
+    src: nginx-web.service
+    dest: /etc/systemd/system/nginx-web.service
+    owner: root
+    group: root
+    mode: 0755
+
+- name: systemd daemon reload
+  systemd:
+    daemon_reload: yes
+
+
+- name: systemd enable and start service
+  systemd:
+    name: "nginx-web.service"
+    enabled: yes
+    state: started
